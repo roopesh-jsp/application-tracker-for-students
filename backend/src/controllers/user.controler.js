@@ -14,6 +14,11 @@ export const signup = async (req, res) => {
         .json({ success: false, message: "User already exists" });
     }
 
+    if (!name || !email || !password) {
+      return res
+        .status(400)
+        .json({ success: false, message: "all fields are required" });
+    }
     // Create a new user
     user = new User({
       name,
@@ -45,6 +50,7 @@ export const signup = async (req, res) => {
 // Controller for User Login
 export const login = async (req, res) => {
   const { email, password } = req.body;
+  console.log("login...");
 
   try {
     // Find the user by email
