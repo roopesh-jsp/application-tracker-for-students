@@ -78,3 +78,21 @@ export const updateApplicationStatus = async (req, res) => {
     });
   }
 };
+
+//get all applications
+export const getAllApplications = async (req, res) => {
+  try {
+    const allAppointments = await Application.find().populate("student");
+
+    return res.status(200).json({
+      success: true,
+      appointments: allAppointments,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+    });
+  }
+};

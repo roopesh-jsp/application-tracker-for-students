@@ -79,3 +79,13 @@ export const login = async (req, res) => {
     res.status(500).json({ success: false, message: "Server error" });
   }
 };
+
+export const getUser = async (req, res) => {
+  console.log(req.user);
+
+  const currUser = await User.findById(req.user._id).populate("applications");
+  return res.status(200).json({
+    success: true,
+    user: currUser,
+  });
+};
