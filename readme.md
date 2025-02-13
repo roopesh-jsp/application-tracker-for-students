@@ -1,4 +1,4 @@
-# student registration and application tracker
+# Student registration and application tracker
 
 this was a small project in whic students can register with their email id and fill appliction forms and track their application status.
 
@@ -11,7 +11,7 @@ this was a small project in whic students can register with their email id and f
 
 that was the paln i initially done to build the application
 
-# dependencies
+# dependencies backend
 
 - "express": "^4.21.2"
 
@@ -24,3 +24,44 @@ that was the paln i initially done to build the application
 - "cors": "^2.8.5",
 
 - "dotenv": "^16.4.7",
+
+#
+
+<br>
+<br>
+
+# Getting Started
+
+## Prerequisites
+
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
+
+## Installation
+
+1. Clone the repository :
+   ```bash
+   git clone https://github.com/your-repo-name.git
+   ```
+2. navigate to project directory :<br>
+   #### for server
+   ```
+   cd backend
+   ```
+   #### for app
+   ```
+   cd frontend
+   ```
+3. Install the dependencies:
+   ```
+   npm install
+   ```
+4. ## Running the Server
+   After installation, you can run the app locally with the following command:
+   ```
+   npm start
+   ```
+5. ## Running the App
+   After installation, you can run the app locally with the following command:
+   ```
+   npm run dev
+   ```
