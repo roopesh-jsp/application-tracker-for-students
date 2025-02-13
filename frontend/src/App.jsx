@@ -8,11 +8,16 @@ import {
 import RootLAyout from "./pages/RootLAyout";
 import Dashboard from "./pages/Dashboard";
 import Application from "./pages/Application";
+import Protect from "./wrappers/Protect";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLAyout />,
+    element: (
+      <Protect>
+        <RootLAyout />
+      </Protect>
+    ),
     children: [
       {
         path: "/",
@@ -23,6 +28,10 @@ const router = createBrowserRouter([
         element: <Application />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <AuthForm />,
   },
 ]);
 function App() {

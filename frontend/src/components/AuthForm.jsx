@@ -1,12 +1,20 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppContext } from "../context/Appcontext";
+import { redirect, useNavigate } from "react-router-dom";
 
 function AuthForm() {
   const [isLogin, setIslogin] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { setToken } = useAppContext();
+  const { setToken, token } = useAppContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token) {
+      return navigate("/");
+    }
+  }, []);
   async function handleFormSubmit(e) {
     setLoading(true);
     e.preventDefault();
@@ -29,6 +37,7 @@ function AuthForm() {
         setToken(data.token);
         localStorage.setItem("token", data.token);
         setError("");
+        navigate("/");
       }
       console.log(data);
     } catch (error) {
