@@ -60,7 +60,9 @@ function DashBoard() {
   return (
     <div>
       <div className="flex justify-between items-center p-10 ">
-        <h1 className="uppercase text-2xl font-bold">Admin- dashboard</h1>
+        <h1 className="uppercase text-lg sm:text-2xl font-bold">
+          Admin- dashboard
+        </h1>
         <button
           onClick={handleLogout}
           className=" border-2 bg-red-300 cursor-pointer rounded-sm px-3 py-2"

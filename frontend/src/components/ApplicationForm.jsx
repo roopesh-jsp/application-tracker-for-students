@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useAppContext } from "../context/Appcontext";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ApplicationForm() {
   const { backend_url, user, token } = useAppContext();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   async function HandleCreateApplication(e) {
     setLoading(true);
     e.preventDefault();
@@ -18,7 +19,7 @@ function ApplicationForm() {
         backend_url + "/api/create",
         enteredData,
         {
-          headers: { Authorization: `Barear ${token}` },
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
       console.log(data);
@@ -34,42 +35,46 @@ function ApplicationForm() {
     }
     setLoading(false);
   }
+
   return (
-    <div className="w-fit bg-white mx-auto my-12 p-10 rounded-2xl shadow-2xs">
-      <h1 className="text-center capitalize font-bold text-xl mb-5">
+    <div className="max-w-lg w-full bg-white mx-auto my-12 p-10 rounded-2xl shadow-lg">
+      <h1 className="text-center capitalize font-bold text-2xl mb-5">
         Application Form
       </h1>
-      <form onSubmit={HandleCreateApplication} className="flex flex-col gap-2 ">
-        <div className="flex gap-3 bg-red justify-between w-[100%] items-center capitalize my-2">
-          <label htmlFor="program_name" className=" text-end">
-            program name
+      <form onSubmit={HandleCreateApplication} className="flex flex-col gap-4">
+        <div className="flex flex-col md:flex-row gap-3 justify-between items-center capitalize my-2">
+          <label
+            htmlFor="program_name"
+            className="text-center w-full md:w-auto"
+          >
+            Program Name
           </label>
           <input
             type="text"
             name="program_name"
             id="program_name"
-            placeholder="program name"
-            className="border-2 px-2 py-1 rounded-sm"
+            placeholder="Program Name"
+            className="border-2 px-3 py-2 rounded-md w-full"
           />
         </div>
-        <div className="flex gap-3 justify-between w-[100%] items-center capitalize my-2">
-          <label className="text-end" htmlFor="university">
-            university
+        <div className="flex flex-col md:flex-row gap-3 justify-between items-center capitalize my-2">
+          <label className="text-center w-full md:w-auto" htmlFor="university">
+            University
           </label>
           <input
             type="text"
             name="university"
             id="university"
-            placeholder="university"
-            className="border-2 px-2 py-1 rounded-sm"
+            placeholder="University"
+            className="border-2 px-3 py-2 rounded-md w-full"
           />
         </div>
-        {error && <p>{error}</p>}
+        {error && <p className="text-red-500 text-center">{error}</p>}
         <button
           disabled={loading}
-          className="bg-blue-300 w-fit mx-auto px-7 mt-2 rounded-lg relative left-2 font-bold  py-2"
+          className="bg-blue-300 w-full md:w-fit mx-auto px-7 mt-4 rounded-lg font-bold py-2"
         >
-          {loading ? "submitting... " : "Submit"}
+          {loading ? "Submitting..." : "Submit"}
         </button>
       </form>
     </div>

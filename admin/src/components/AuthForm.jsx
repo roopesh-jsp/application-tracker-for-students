@@ -54,31 +54,28 @@ function AuthForm() {
     }
   }
   return (
-    <div className="flex flex-col gap-7 p-10 bg-stone-50 shadow-xl rounded-xl w-[40%] min-w-96  mx-auto my-40">
+    <div className="flex flex-col gap-7 p-10 bg-stone-50 shadow-xl rounded-xl  w-full max-w-lg sm:w-[80%] md:w-[60%]  lg:w-[40%] mx-auto my-20">
       <h1 className="font-bold text-2xl text-center mt-5">login - admin</h1>
-      <form className="flex flex-col gap-4 " onSubmit={handleFormSubmit}>
+      <form className="flex flex-col gap-4" onSubmit={handleFormSubmit}>
         <input
-          className="px-3 py-2 font-medium border-2 rounded-md "
+          className="px-3 py-2 font-medium border-2 rounded-md"
           type="text"
           name="email"
           placeholder="email"
         />
         <input
-          className="px-3 py-2 font-medium border-2 rounded-md "
+          className="px-3 py-2 font-medium border-2 rounded-md"
           type="password"
           name="password"
           placeholder="password"
         />
-        {error && (
-          <p className="text-center text-red-500  font-bold">{error}</p>
-        )}
+        {error && <p className="text-center text-red-500 font-bold">{error}</p>}
         <button
           disabled={loading}
-          className="bg-blue-400 p-3 cursor-pointer text-white font-xl rounded-lg font-bold shadow"
+          className="bg-blue-400 p-3 cursor-pointer text-white text-xl rounded-lg font-bold shadow"
         >
           login
         </button>
-        =
       </form>
     </div>
   );
