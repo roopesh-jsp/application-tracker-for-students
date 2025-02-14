@@ -35,29 +35,40 @@ function ApplicationForm() {
     setLoading(false);
   }
   return (
-    <div>
-      <h1>Application Form</h1>
-      <form onSubmit={HandleCreateApplication}>
-        <div>
-          <label htmlFor="program_name">program name</label>
+    <div className="w-fit bg-white mx-auto my-12 p-10 rounded-2xl shadow-2xs">
+      <h1 className="text-center capitalize font-bold text-xl mb-5">
+        Application Form
+      </h1>
+      <form onSubmit={HandleCreateApplication} className="flex flex-col gap-2 ">
+        <div className="flex gap-3 bg-red justify-between w-[100%] items-center capitalize my-2">
+          <label htmlFor="program_name" className=" text-end">
+            program name
+          </label>
           <input
             type="text"
             name="program_name"
             id="program_name"
             placeholder="program name"
+            className="border-2 px-2 py-1 rounded-sm"
           />
         </div>
-        <div>
-          <label htmlFor="university">university</label>
+        <div className="flex gap-3 justify-between w-[100%] items-center capitalize my-2">
+          <label className="text-end" htmlFor="university">
+            university
+          </label>
           <input
             type="text"
             name="university"
             id="university"
             placeholder="university"
+            className="border-2 px-2 py-1 rounded-sm"
           />
         </div>
         {error && <p>{error}</p>}
-        <button disabled={loading}>
+        <button
+          disabled={loading}
+          className="bg-blue-300 w-fit mx-auto px-7 mt-2 rounded-lg relative left-2 font-bold  py-2"
+        >
           {loading ? "submitting... " : "Submit"}
         </button>
       </form>

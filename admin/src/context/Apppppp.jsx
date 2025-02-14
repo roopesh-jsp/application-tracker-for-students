@@ -6,15 +6,15 @@ const AppContext = createContext({
 });
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 export default function AppContextPorovider({ children }) {
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(localStorage.getItem("atoken"));
 
   console.log("hai");
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setToken(localStorage.getItem("token"));
+    if (localStorage.getItem("atoken")) {
+      setToken(localStorage.getItem("atoken"));
     }
-    console.log(localStorage.getItem("token"));
+    console.log(localStorage.getItem("atoken"));
   }, []);
 
   const value = {

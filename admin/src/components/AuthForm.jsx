@@ -29,7 +29,7 @@ function AuthForm() {
         enteredData
       );
       if (data.success) {
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("atoken", data.token);
         setToken(data.token);
         console.log(token);
 
