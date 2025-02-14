@@ -30,6 +30,22 @@ that was the paln i initially done to build the application
 <br>
 <br>
 
+# env variables
+
+- ##### refer to the .env.sample files in backend, forntend, admin folders
+
+### Backend
+
+- MONGO_URL = "your mongo url"
+- PORT = 3000
+- ADMIN_MAIL = "admin@123"
+- ADMIN_PASS = "1234"
+- JWT_SECRET = "YOUR SECERT"
+
+### Frontend and Admin
+
+- VITE_BACKEND_URL = http://localhost:3000
+
 # Getting Started
 
 ## Prerequisites
