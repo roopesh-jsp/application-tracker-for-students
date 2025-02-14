@@ -14,7 +14,7 @@ adminRoute.post("/admin/login", adminLogin);
 //get all applications
 adminRoute.get("/get-all", adminAuthMiddleware, getAllApplications);
 
-adminRoute.put(
+adminRoute.post(
   "/admin/application",
   adminAuthMiddleware,
   updateApplicationStatus

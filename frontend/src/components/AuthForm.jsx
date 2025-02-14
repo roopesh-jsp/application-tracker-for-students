@@ -37,9 +37,10 @@ function AuthForm() {
         setToken(data.token);
         localStorage.setItem("token", data.token);
         setError("");
+        console.log(data);
+
         navigate("/");
       }
-      console.log(data);
     } catch (error) {
       // Handle errors (both client-side and server-side)
       if (

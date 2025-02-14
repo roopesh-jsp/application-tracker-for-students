@@ -1,24 +1,29 @@
 import React, { useEffect, useState } from "react";
 import AuthForm from "./components/AuthForm";
 import DashBoard from "./components/DashBoard";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Protect from "./wrappers/Protector";
+import AppContextPorovider from "./context/Apppppp";
 
-const router = createBro;
+const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <AuthForm />,
+  },
+  {
+    path: "/",
+    element: (
+      <Protect>
+        <DashBoard />
+      </Protect>
+    ),
+  },
+]);
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("token"));
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setToken(localStorage.getItem("token"));
-    }
-  });
-
-  if (!token) {
-    return <AuthForm />;
-  }
   return (
-    <div>
-      <DashBoard />
-    </div>
+    <AppContextPorovider>
+      <RouterProvider router={router} />
+    </AppContextPorovider>
   );
 }
 

@@ -1,16 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import DashBoard from "./DashBoard";
+import { useAppContext } from "../context/Apppppp";
+import { useNavigate } from "react-router-dom";
 
 function AuthForm() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const { token, setToken } = useAppContext();
 
+  const navigate = useNavigate();
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      return <DashBoard />;
+    console.log(token);
+    if (token) {
+      navigate("/");
     }
-  }, []);
+  });
   async function handleFormSubmit(e) {
     setLoading(true);
     e.preventDefault();
@@ -26,10 +30,14 @@ function AuthForm() {
       );
       if (data.success) {
         localStorage.setItem("token", data.token);
+        setToken(data.token);
+        console.log(token);
+
         setError("");
-        return <DashBoard />;
+        console.log(data);
+
+        navigate("/");
       }
-      console.log(data);
     } catch (error) {
       // Handle errors (both client-side and server-side)
       if (
